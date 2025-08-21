@@ -43,3 +43,20 @@ Constraints:
 nums is sorted in non-decreasing order.*/
 
 //SOLUTION
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        int i=0;
+        for(int j=0;j<nums.size();j++){           //optimized solution //T.C->O(n) S.C->O(1)
+
+            if (nums[j]!=nums[i]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
+};

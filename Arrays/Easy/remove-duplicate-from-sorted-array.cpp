@@ -20,3 +20,56 @@ Explanation: Resulting array = [-2, 2, 4, 5, _, _, _, _]
 There are 4 distinct elements in nums and the elements marked as _ can have any value.*/
 
 //SHEET A-Z SOLUTION-
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        if(nums.size()==0)
+            return 0;
+        int i=0;
+        for(int j=0;j<nums.size();j++){
+            if (nums[j]!=nums[i]){
+                i++;
+                nums[i]=nums[j];
+            }
+        }
+        return i+1;
+    }
+};
+
+//  APPORACH 2 - USING SET
+
+#include <bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+int removeDuplicates(int arr[], int n) {
+    set<int> st;
+    for (int i = 0; i < n; i++) {
+        st.insert(arr[i]);
+    }
+
+    int k = st.size();
+    int j = 0;
+    for (int x : st) {
+        arr[j++] = x;
+    }
+    return k;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int arr[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    int newSize = removeDuplicates(arr, n);
+
+    for (int i = 0; i < newSize; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
