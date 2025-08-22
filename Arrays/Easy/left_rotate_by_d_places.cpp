@@ -1,3 +1,8 @@
+#include <bits/stdc++.h>
+#include<iostream>
+using namespace std;
+
+
 // below code for certain number of rotation
 
 void rotateByDPosition(vector<int> &arr, int n, int d)
@@ -80,3 +85,15 @@ rotate 8 steps to the left: [1, 5, 3, -5, 3, 4]*/
 
 //sheet sol-
 
+class Solution {
+public:
+    void rotateArray(vector<int>& nums, int k) {
+        int n = nums.size();
+        k = k % n; 
+        vector<int> temp(n);
+        for (int i = 0; i < n; i++) {
+            temp[(i - k + n) % n] = nums[i]; 
+        }
+        nums = temp;
+    }
+};
