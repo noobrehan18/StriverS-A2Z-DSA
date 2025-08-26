@@ -26,14 +26,16 @@ Constraints:
 -104 <= nums[i] <= 104
 */
 
-//SOL->
+// better approch SOL->
 
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
         int n=nums.size();
         int maxi=INT_MIN;
-        for(int i=0;i<n;i++){
+        for(int i=0;i<n;i++){                       // in this sol all test case is not passed 
+                                                        // sol is for small input
+                                                        //not big input
             int sum=0;
             for(int j=i;j<n;j++){
                 sum+=nums[j];
@@ -41,5 +43,24 @@ public:
             }
         }
         return maxi;
+    }
+};
+
+// optimal approch SOL->
+
+//unsing kadane's algo
+
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int maxSum=nums[0];
+        int currentSum=nums[0];
+        int n=nums.size();
+        for(int i=1;i<n;i++){
+            currentSum=max(nums[i],currentSum+nums[i]);
+            maxSum=max(maxSum,currentSum);
+        }
+        return maxSum;
+        
     }
 };
