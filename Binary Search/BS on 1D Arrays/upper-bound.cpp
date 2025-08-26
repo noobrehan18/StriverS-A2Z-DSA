@@ -51,3 +51,21 @@ Explanation:
 Index 3 is the smallest index such that arr[3] > x*/
 
 //sol->
+class Solution{
+public:
+    int upperBound(vector<int> &nums, int x){
+        int n = nums.size();
+        int low = 0, high = n - 1;
+        int ans = n;
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            if (nums[mid] > x) {					// only change is here in LB mid>=n 													// in UB mid>n
+                ans = mid;
+                high = mid - 1;
+            } else {
+                low = mid + 1;
+            }
+        }
+        return ans;
+    }
+};
