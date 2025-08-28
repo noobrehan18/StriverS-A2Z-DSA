@@ -74,3 +74,20 @@ Explanation: The floor of 8 in the array is 8, and the ceiling of 8 in the array
 
 //sol->>
 
+class Solution {
+public:
+    vector<int> getFloorAndCeil(vector<int> nums, int x) {
+        int floor=-1, ceil=-1;
+        for(int i=0,i<nums.size(),i++){
+            int num=nums[i];
+            if(num<=x){
+                floor=num;
+            }
+            if(num>x && ceil==-1){
+                ceil=num;
+            }
+        }
+        return {floor,ceil};
+   
+    }
+};
