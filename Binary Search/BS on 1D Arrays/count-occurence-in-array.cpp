@@ -52,4 +52,39 @@ int count(vector<int>& arr, int n, int x) {
 	if(ans.first==-1) return 0;
 	return ans.second - ans.first+1;
 }
+// sheet qs sol->> uisng C++ stl
+
+/*                  Count Occurrences in a Sorted Array
+
+You are given a sorted array of integers arr and an integer target. Your task is to determine how many times target appears in arr.
+
+Return the count of occurrences of target in the array.
+Examples:
+Input: arr = [0, 0, 1, 1, 1, 2, 3], target = 1
+Output: 3
+Explanation: The number 1 appears 3 times in the array.
+Input: arr = [5, 5, 5, 5, 5, 5], target = 5
+Output: 6
+Explanation: All elements in the array are 5, so the target appears 6 times.*/
+// same as find first and last position some treeks in this count find 
+
+//soltion->
+
+class Solution {
+public:
+    vector<int> search_stl(const vector<int>& nums, int target) {
+        int lb = lower_bound(nums.begin(), nums.end(), target) - nums.begin();
+        int rb = upper_bound(nums.begin(), nums.end(), target) - nums.begin();
+
+        if (lb == nums.size() || nums[lb] != target)
+            return {-1, -1};
+        return {lb, rb - 1};
+    }
+
+    int countOccurrences(const vector<int>& arr, int target) {
+        vector<int> count = search_stl(arr, target);
+        if (count[0] == -1) return 0;
+        return (count[1] - count[0] + 1);
+    }
+};
 
