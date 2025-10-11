@@ -26,3 +26,25 @@ The number of nodes in the linked list is in the range [0, 104].
 -106 <= Node.val <= 106 */
 
 //SOLTION-->
+
+
+class Solution {
+public:
+    ListNode* oddEvenList(ListNode* head) {
+        if(head== NULL || head->next==NULL){
+            return head;
+        }
+        ListNode* odd=head;
+        ListNode* even=head->next;
+        ListNode* evenHead=head->next;
+        while(even!=NULL && even->next!=NULL){
+            odd->next=odd->next->next;
+            even->next=even->next->next;
+
+            odd=odd->next;
+            even=even->next;
+        }
+        odd->next=evenHead;
+        return head;
+    }
+};
