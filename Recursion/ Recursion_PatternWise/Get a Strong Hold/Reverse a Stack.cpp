@@ -4,7 +4,7 @@ You are given a stack of integers. Your task is to reverse the stack using recur
 
 Your solution must modify the input stack in-place to reverse the order of its elements.
 Example 1
-Input: stack = [4, 1, 3, 2]
+Input: stack = [4, 1, 3, 2]*/
 
 class Solution {
 public:
