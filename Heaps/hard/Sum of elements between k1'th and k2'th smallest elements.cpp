@@ -1,0 +1,30 @@
+#include <queue>
+using namespace std;
+
+class Solution {
+  public:
+    long long sumBetweenTwoKth(long long A[], long long N, long long K1, long long K2) {
+        
+        priority_queue<long long, vector<long long>, greater<long long>> pq;
+        
+        
+        for(int i = 0; i < N; i++) {
+            pq.push(A[i]);
+        }
+        
+        long long sum = 0;
+        
+        
+        for(int i = 0; i < K1; i++) {
+            pq.pop();
+        }
+        
+       
+        for(int i = K1; i < K2-1; i++) {
+            sum += pq.top();
+            pq.pop();
+        }
+        
+        return sum;
+    }
+};
